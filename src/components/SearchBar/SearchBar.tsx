@@ -3,9 +3,16 @@
 import { Pressable, TextInput, View } from "react-native";
 import Icon from "react-native-remix-icon";
 import { useNavigationContext } from "../../../contexts/Context.Navigation";
+import { useNavigation } from "@react-navigation/native";
 
 export const SearchBar = ( ) => {
-    const NavigationContext = useNavigationContext( );
+    const navigation = useNavigation( );
+    const { updateRoute } = useNavigationContext( );
+
+    const updateContextAndNavigate = ( route: string ) => {
+        updateRoute(route);
+        navigation.navigate({ name: route } as never);
+    }
 
     return (
         <View
@@ -16,7 +23,7 @@ export const SearchBar = ( ) => {
             paddingRight: 16,
         }}>
             <Pressable
-            onPress={ ( ) => NavigationContext.updateRoute("Search") }
+            onPress={ ( ) => updateContextAndNavigate("Search") }
             style={{
                 backgroundColor: "rgba(0, 0, 0, 0.045)",
                 width: "100%",
@@ -36,7 +43,7 @@ export const SearchBar = ( ) => {
                 <TextInput
                 placeholder="Car, location, address..."
                 placeholderTextColor={"rgba(0, 0, 0, 0.3)"}
-                onFocus={ ( ) => NavigationContext.updateRoute("Search") }
+                onFocus={ ( ) => updateContextAndNavigate("Search") }
                 style={{
                     flex: 1,
                     fontSize: 16,
