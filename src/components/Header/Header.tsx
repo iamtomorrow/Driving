@@ -26,7 +26,8 @@ export const Header = ( ) => {
                     height: "100%",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    padding: 10,
                 }}>
                     <Pressable
                     style={{
@@ -36,11 +37,12 @@ export const Header = ( ) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        backgroundColor: "#000000",
                     }}>
                         <Icon 
                             name="menu-line"
                             size={24}
-                            color="#000000"
+                            color="#ffffff"
                         />
                     </Pressable>
                 </View>
